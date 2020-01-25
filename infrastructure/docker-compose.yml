@@ -12,21 +12,42 @@ services:
     networks:
       - linx-network
 
-  products-service:
-    build: ./../products
-    container_name: products-service
+  api:
+    build: ./../
+    container_name: api
     ports:
-      - "3001:3001"
-    links:
-      - db:db
+      - "3000:3000"
     depends_on:
       - db
     environment:
       - DATABASE_HOST=db
+    networks:
+      - linx-network
+
+  products:
+    build: ./../products
+    container_name: products
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+    networks:
+      - linx-network
+
+  catalog:
+    build: ./../products-catalog
+    container_name: catalog
+    ports:
+      - "3002:3002"
+    networks:
+      - linx-network
 
 networks:
   linx-network:
     name: linx-network
+    driver: "bridge"
 
 volumes:
   postgres-volume-pgdata:

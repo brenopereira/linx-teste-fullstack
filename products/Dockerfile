@@ -1,10 +1,10 @@
 FROM node:10.18.1
 
-ADD . /app
+ADD . /services/products
 
-RUN cd /app; \
-  npm install --production
+RUN cd /services/products; \
+  npm install
 
-EXPOSE 3000
+EXPOSE 3001
 
-CMD ["node", "/app/index.js"]
+CMD ["node", "/services/products/index.js"]

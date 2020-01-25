@@ -5,6 +5,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.get("/catalogs", (req, res) => res.send("Hello Catalog API"));
 
-app.listen(3001, () =>
-  console.log(`Product Catalog Microservice API listening on port 3001!`)
+app.listen(3002, () =>
+  console.log(`Product Catalog Microservice API listening on port 3002!`)
 );

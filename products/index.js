@@ -7,6 +7,6 @@ app.get("/products", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(3002, () =>
-  console.log(`Product Microservice API listening on port 3002!`)
+app.listen(3001, () =>
+  console.log(`Product Microservice API listening on port 3001!`)
 );

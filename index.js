@@ -4,12 +4,12 @@ const app = express();
 const port = 3000;
 const { PRODUCTS_CATALOG_API_URL, PRODUCTS_API_URL } = require("./URLs");
 
+const productsServiceProxy = httpProxy("products:3001", PRODUCTS_API_URL);
+
 const productCatalogServiceProxy = httpProxy(
-  "localhost:3001",
+  "catalog:3002",
   PRODUCTS_CATALOG_API_URL
 );
-
-const productsServiceProxy = httpProxy("localhost:3002", PRODUCTS_API_URL);
 
 app.get("/", (req, res) => res.send("Hello Gateway API"));
 

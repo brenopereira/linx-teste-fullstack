@@ -1,0 +1,32 @@
+version: "3.5"
+
+services:
+  db:
+    container_name: db
+    restart: always
+    image: debezium/postgres:11-alpine
+    volumes:
+      - postgres-volume-pgdata:/var/lib/postgresql/data
+    env_file:
+      - linx.service.env
+    networks:
+      - linx-network
+
+  products-service:
+    build: ./../products
+    container_name: products-service
+    ports:
+      - "3001:3001"
+    links:
+      - db:db
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+
+networks:
+  linx-network:
+    name: linx-network
+
+volumes:
+  postgres-volume-pgdata:

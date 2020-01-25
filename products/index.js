@@ -1,0 +1,12 @@
+const express = require("express");
+const app = express();
+
+app.use(express.urlencoded({ extended: false }));
+
+app.get("/products", (req, res) => {
+  res.send("Hello World!");
+});
+
+app.listen(3002, () =>
+  console.log(`Product Microservice API listening on port 3002!`)
+);

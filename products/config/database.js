@@ -1,7 +1,7 @@
 module.exports = {
-  username: "root",
-  password: "",
-  database: "linx",
-  host: "127.0.0.1",
-  dialect: "mongodb" // Create connection
+  database: process.env.POSTGRES_DB,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  host: process.env.POSTGRES_HOST,
+  dialect: "postgres"
 };

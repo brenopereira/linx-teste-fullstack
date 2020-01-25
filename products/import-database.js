@@ -1,13 +1,18 @@
-var fs = require("fs");
+const fs = require("fs");
+const { Product } = require("./app/models");
 
-var data = fs
+const productsCatalog = fs
   .readFileSync("./catalog.json")
   .toString()
   .split("\n");
 
-data.splice(0, 0, "teste");
-var text = data.join("\n");
+productsCatalog.map(row => {
+  const product = JSON.parse(row);
 
-fs.writeFile("./catalog.json", text, function(err) {
-  if (err) return err;
+  Product.create({
+    name: product.details.name,
+    price: product.price,
+    last_price: product.oldPrice,
+    status: product.status
+  });
 });

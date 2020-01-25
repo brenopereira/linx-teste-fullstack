@@ -1,0 +1,69 @@
+{
+  "imagesSsl": {},
+  "skus": [
+    {
+      "sku": "990615",
+      "specs": {},
+      "properties": {
+        "name": "Colher Vazada Bambu com Cabo Metálico Anji Dourada - 12936",
+        "installment": { "count": 10, "price": 7.99 },
+        "images": {
+          "imagem1": "//d1h4n7nr93grs2.cloudfront.net/Custom/Content/Products/11/07/1107117_p-13230_m2_636935117437039354",
+          "default": "//d1h4n7nr93grs2.cloudfront.net/Custom/Content/Products/11/07/1107117_p-13230_m1_636935117407818547.jpg",
+          "imagem2": "//d1h4n7nr93grs2.cloudfront.net/Custom/Content/Products/11/07/1107117_p-13230_m2_636935117439693534"
+        },
+        "price": 79.9,
+        "url": "//www.linxcommerce.core.dcg.com.br/colher-vazada-bambu-com-cabo-metalico-anji-dourada-p985363?tsid=18&v=990615",
+        "details": { "precoavista": 79.9 },
+        "status": "available",
+        "oldPrice": 79.9
+      },
+      "customBusiness": {}
+    }
+  ],
+  "apiKey": "impulse-core",
+  "description": "Colher Vazada Bambu com Cabo Met&#225;lico Anji Dourada 1552589",
+  "type": "product",
+  "auditInfo": {
+    "updatedBy": "importer-v2",
+    "updatedThrough": "dc-catalog-server"
+  },
+  "specs": {},
+  "eanCode": null,
+  "price": "79.9",
+  "details": {
+    "name": "Colher Vazada Bambu com Cabo Metálico Anji Dourada - 12936",
+    "brand": "Anji",
+    "rating": "0,00",
+    "cod_venda": "13230",
+    "precoavista": "79.90"
+  },
+  "remoteUrl": null,
+  "categories": [
+    { "id": "969", "name": "Utilidades Domésticas", "parents": [] }
+  ],
+  "id": "13230",
+  "stock": null,
+  "brand": "Anji",
+  "customBusiness": {},
+  "basePrice": null,
+  "images": {
+    "imagem1": "//d1h4n7nr93grs2.cloudfront.net/Custom/Content/Products/11/07/1107117_p-13230_m2_636935117437039354",
+    "default": "//d1h4n7nr93grs2.cloudfront.net/Custom/Content/Products/11/07/1107117_p-13230_m1_636935117407818547.jpg",
+    "imagem2": "//d1h4n7nr93grs2.cloudfront.net/Custom/Content/Products/11/07/1107117_p-13230_m2_636935117439693534"
+  },
+  "kitProducts": [],
+  "created": "2018-04-06 11:02:35",
+  "oldPrice": "79.9",
+  "published": null,
+  "version": "V2",
+  "url": "//www.linxcommerce.core.dcg.com.br/colher-vazada-bambu-com-cabo-metalico-anji-dourada-p985363?tsid=18&v=990615",
+  "tags": [],
+  "unit": null,
+  "installment": { "count": 10, "price": 7.99 },
+  "name": "Colher Vazada Bambu com Cabo Metálico Anji Dourada - 12936",
+  "clientLastUpdated": "2020-01-21 05:00:45",
+  "extraInfo": { "hash": "" },
+  "status": "AVAILABLE",
+  "ungroupedId": "default"
+}

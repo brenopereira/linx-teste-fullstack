@@ -7,23 +7,31 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: Sequelize.INTEGER
       },
       name: {
         allowNull: false,
-        type: DataTypes.STRING
+        type: Sequelize.STRING
+      },
+      price: {
+        allowNull: false,
+        type: Sequelize.FLOAT()
+      },
+      last_price: {
+        allowNull: false,
+        type: Sequelize.FLOAT()
       },
       status: {
         allowNull: false,
-        type: DataTypes.STRING
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: Sequelize.DATE
       },
       updatedAt: {
         allowNull: false,
-        type: DataTypes.DATE
+        type: Sequelize.DATE
       }
     });
   },
@@ -36,5 +44,7 @@ module.exports = {
       Example:
       return queryInterface.dropTable('products');
     */
+
+    return queryInterface.dropTable("products");
   }
 };

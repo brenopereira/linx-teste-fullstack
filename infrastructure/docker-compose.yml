@@ -9,6 +9,8 @@ services:
       - postgres-volume-pgdata:/var/lib/postgresql/data
     env_file:
       - linx.service.env
+    ports:
+      - "5432:5432"
     networks:
       - linx-network
 
@@ -58,4 +60,4 @@ networks:
     name: linx-network
 
 volumes:
-  postgres-volume-pgdata:c
+  postgres-volume-pgdata:

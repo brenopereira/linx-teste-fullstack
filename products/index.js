@@ -3,8 +3,11 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 
-app.get("/products", (req, res) => {
-  res.send("Hello World!");
+const { Product } = require("./app/models");
+
+app.get("/products", async (req, res) => {
+  const products = await Product.cache().findAll();
+  res.json(products);
 });
 
 app.listen(3001, () =>

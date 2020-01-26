@@ -46,7 +46,10 @@ services:
       - linx-network
 
   redis:
+    container_name: redis
     image: redis
+    ports:
+      - "6379:6379"
     networks:
       - linx-network
 
@@ -55,4 +58,4 @@ networks:
     name: linx-network
 
 volumes:
-  postgres-volume-pgdata:
+  postgres-volume-pgdata:c

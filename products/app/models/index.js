@@ -2,8 +2,23 @@ const fs = require("fs");
 const path = require("path");
 const Sequelize = require("sequelize");
 const config = require("../../config/database.js");
-
 const db = {};
+
+const Redis = require("ioredis");
+const redis = new Redis();
+
+const RedisAdaptor = require("sequelize-transparent-cache-ioredis");
+const sequelizeCache = require("sequelize-transparent-cache");
+
+const redisAdaptor = new RedisAdaptor({
+  client: redis,
+  namespace: "model",
+  lifetime: 60 * 60
+});
+
+const { withCache } = sequelizeCache(redisAdaptor);
+const User = withCache(sequelize.import("./products"));
+
 const sequelize = new Sequelize(config);
 
 fs.readdirSync(__dirname)

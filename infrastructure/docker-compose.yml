@@ -33,6 +33,7 @@ services:
       - db
     environment:
       - DATABASE_HOST=db
+      - REDIS_HOST=redis
     networks:
       - linx-network
 
@@ -41,6 +42,11 @@ services:
     container_name: catalog
     ports:
       - "3002:3002"
+    networks:
+      - linx-network
+
+  redis:
+    image: redis
     networks:
       - linx-network
 

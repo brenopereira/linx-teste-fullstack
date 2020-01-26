@@ -5,19 +5,19 @@ const config = require("../../config/database.js");
 const db = {};
 
 const Redis = require("ioredis");
-const redis = new Redis();
+const redis = new Redis({
+  host: "192.168.16.2"
+});
 
 const RedisAdaptor = require("sequelize-transparent-cache-ioredis");
-const sequelizeCache = require("sequelize-transparent-cache");
-
 const redisAdaptor = new RedisAdaptor({
   client: redis,
   namespace: "model",
   lifetime: 60 * 60
 });
 
+const sequelizeCache = require("sequelize-transparent-cache");
 const { withCache } = sequelizeCache(redisAdaptor);
-const User = withCache(sequelize.import("./products"));
 
 const sequelize = new Sequelize(config);
 
@@ -29,7 +29,7 @@ fs.readdirSync(__dirname)
       file.slice(-3) === ".js"
   )
   .forEach(file => {
-    const model = sequelize.import(path.join(__dirname, file));
+    const model = withCache(sequelize.import(path.join(__dirname, file)));
     db[model.name] = model;
   });
 
@@ -38,6 +38,12 @@ Object.keys(db).forEach(modelName => {
     db[modelName].associate(db);
   }
 });
+
+async function test() {
+  await sequelize.sync();
+}
+
+test();
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

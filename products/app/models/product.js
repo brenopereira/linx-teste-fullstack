@@ -3,7 +3,9 @@ module.exports = (sequelize, DataTypes) => {
     "Product",
     {
       name: DataTypes.STRING,
-      status: DataTypes.STRING
+      status: DataTypes.STRING,
+      price: DataTypes.STRING,
+      last_price: DataTypes.STRING
     },
     {
       tableName: "products"

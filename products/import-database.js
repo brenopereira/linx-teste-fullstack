@@ -9,7 +9,7 @@ const productsCatalog = fs
 productsCatalog.map(row => {
   const product = JSON.parse(row);
 
-  Product.create({
+  Product.cache().create({
     name: product.details.name,
     price: product.price,
     last_price: product.oldPrice,

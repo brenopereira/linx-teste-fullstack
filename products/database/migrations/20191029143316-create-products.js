@@ -15,11 +15,11 @@ module.exports = {
       },
       price: {
         allowNull: false,
-        type: Sequelize.FLOAT()
+        type: Sequelize.STRING
       },
       last_price: {
         allowNull: false,
-        type: Sequelize.FLOAT()
+        type: Sequelize.STRING
       },
       status: {
         allowNull: false,

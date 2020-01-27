@@ -12,5 +12,12 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  Product.associate = function(models) {
+    Product.hasOne(models.Product, {
+      foreignKey: "category_id",
+      as: "product_categories"
+    });
+  };
+
   return Product;
 };

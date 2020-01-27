@@ -40,19 +40,13 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-async function loadSyncDatabaseRedisLinx(){
-  await sequelize.sync().then(msg => {
-    console.log(msg)
-  }).catch(err => {
-    console.log(err)
-  });
+async function loadSyncDatabaseRedisLinx() {
+  await sequelize.sync();
 }
 
-loadSyncDatabaseRedisLinx()
+loadSyncDatabaseRedisLinx();
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-
-// 
 
 module.exports = db;

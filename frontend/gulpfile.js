@@ -5,11 +5,11 @@ const sass = require("gulp-sass");
 const uglify = require("gulp-uglify");
 const pipeline = require("readable-stream").pipeline;
 const htmlmin = require("gulp-htmlmin");
+const browserSync = require("browser-sync").create();
 
 sass.compiler = require("node-sass");
 
 gulp.task("default", watch);
-gulp.task("sass", compile);
 gulp.task("sass", compile);
 gulp.task("build", build);
 
@@ -20,7 +20,14 @@ function build() {
 function watch() {
   gulp.watch("scss/**/*.scss", compile);
   gulp.watch("*.html", minify);
-  gulp.watch("*.html", minify);
+  gulp.watch("*.html").on("change", browserSync.reload);
+  gulp.watch("scss/**/*.scss").on("change", browserSync.reload);
+
+  browserSync.init({
+    server: {
+      baseDir: "./"
+    }
+  });
 }
 
 function minify() {

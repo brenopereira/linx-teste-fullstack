@@ -41,11 +41,11 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-// async function loadSyncDatabaseRedisLinx() {
-//   await sequelize.sync();
-// }
+async function loadSyncDatabaseRedisLinx() {
+  await sequelize.sync();
+}
 
-// loadSyncDatabaseRedisLinx();
+loadSyncDatabaseRedisLinx();
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

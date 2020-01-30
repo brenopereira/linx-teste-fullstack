@@ -1,14 +1,18 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
+const routes = require("./routes");
 
-const { Product } = require("./app/models");
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
 
-app.get("/products", async (req, res) => {
-  const products = await Product.cache().findByPk(1);
-  res.json(products);
-});
+app.use(bodyParser.json());
+
+routes(app);
 
 app.listen(3001, () =>
   console.log(`Product Microservice API listening on port 3001!`)

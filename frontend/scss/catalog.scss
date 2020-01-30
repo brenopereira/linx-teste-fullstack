@@ -1,3 +1,55 @@
 * {
   margin: 0;
 }
+
+ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+  li {
+    display: block;
+    list-style: none;
+    padding: 50px;
+
+    .product-image {
+      span {
+        left: 50px;
+        top: 25px;
+        background: red;
+        padding: 5px;
+        color: #fff;
+      }
+
+      img {
+        width: 220px;
+      }
+    }
+  }
+}
+
+button.prev,
+button.next {
+  display: flex;
+  font-size: 32px;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: #333;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+}
+
+button.prev {
+  position: absolute;
+  left: 0;
+  top: 150px;
+}
+
+button.next {
+  position: absolute;
+  right: 0;
+  top: 150px;
+}

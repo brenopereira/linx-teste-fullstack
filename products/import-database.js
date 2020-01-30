@@ -1,18 +1,33 @@
 const fs = require("fs");
 const { Product } = require("./app/models");
+const { ProductCategory } = require("./app/models");
 
 const productsCatalog = fs
   .readFileSync("./catalog.json")
   .toString()
   .split("\n");
 
-productsCatalog.map(row => {
+productsCatalog.map(async row => {
   const product = JSON.parse(row);
 
-  Product.cache().create({
-    name: product.details.name,
-    price: product.price,
-    last_price: product.oldPrice,
-    status: product.status
+  product.categories.map(async category => {
+    const categories = await ProductCategory.findAll({
+      where: {
+        name: category.name
+      }
+    });
+
+    if (categories.length) {
+      console.log("existe");
+    } else {
+      console.log("nao existe");
+    }
   });
+
+  // Product.cache().create({
+  //   name: product.details.name,
+  //   price: product.price,
+  //   last_price: product.oldPrice,
+  //   status: product.status
+  // });
 });

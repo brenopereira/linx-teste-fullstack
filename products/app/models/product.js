@@ -12,5 +12,15 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
+  Product.associate = function(models) {
+    Product.belongsToMany(models.Category, {
+      through: "product_categories",
+      foreignKey: "product_id",
+      as: "categories"
+    });
+  };
+
+  Product.sync({ force: true });
+
   return Product;
 };

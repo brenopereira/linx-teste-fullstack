@@ -17,5 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
+  ProductCategory.sync({ force: true });
+
   return ProductCategory;
 };

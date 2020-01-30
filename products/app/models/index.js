@@ -31,6 +31,7 @@ fs.readdirSync(__dirname)
   )
   .forEach(file => {
     const model = withCache(sequelize.import(path.join(__dirname, file)));
+    // const model = sequelize.import(path.join(__dirname, file));
     db[model.name] = model;
   });
 
@@ -40,11 +41,11 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-async function loadSyncDatabaseRedisLinx() {
-  await sequelize.sync();
-}
+// async function loadSyncDatabaseRedisLinx() {
+//   await sequelize.sync();
+// }
 
-loadSyncDatabaseRedisLinx();
+// loadSyncDatabaseRedisLinx();
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;

@@ -15,15 +15,14 @@ productsCatalog.map(async row => {
       where: {
         name: category.name
       }
-    })
+    });
 
-    if(categories.length) {
-      console.log('existe')
+    if (categories.length) {
+      console.log("existe");
     } else {
-      console.log("nao existe")
+      console.log("nao existe");
     }
-  })
-
+  });
 
   // Product.cache().create({
   //   name: product.details.name,

@@ -4,6 +4,8 @@ module.exports = {
   async index(req, res) {
     const { id, type } = req.params;
 
+    console.log(req.params);
+
     const products = await Product.findByPk(id, {
       include: ["categories"]
     });

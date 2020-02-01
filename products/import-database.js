@@ -1,6 +1,5 @@
 const fs = require("fs");
-const { Product } = require("./app/models");
-const { ProductCategory } = require("./app/models");
+const { Product, Category, ProductCategory } = require("./app/models");
 
 const productsCatalog = fs
   .readFileSync("./catalog.json")
@@ -11,7 +10,7 @@ productsCatalog.map(async row => {
   const product = JSON.parse(row);
 
   product.categories.map(async category => {
-    const categories = await ProductCategory.findAll({
+    const categories = await Category.findAll({
       where: {
         name: category.name
       }

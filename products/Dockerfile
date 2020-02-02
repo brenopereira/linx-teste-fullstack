@@ -4,9 +4,10 @@ ADD . /services/products
 
 RUN cd /services/products; \
   npm install; \
-  npm install -g sequelize-cli; \
-  sequelize db:migrate; \
-  node import-database.js
+  npm i -g sequelize-cli; \
+  git clone https://github.com/vishnubob/wait-for-it.git; \
+  chmod +X entry.sh; \
+  sh entry.sh
 
 EXPOSE 3001
 

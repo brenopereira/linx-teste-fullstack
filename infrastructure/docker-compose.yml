@@ -1,10 +1,24 @@
 version: "3.5"
 
 services:
+  redis:
+    container_name: redis
+    restart: always
+    image: redis
+    ports:
+      - "6379:6379"
+    networks:
+      - linx-network
+
   db:
     container_name: db
     restart: always
     image: debezium/postgres:11-alpine
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
     volumes:
       - postgres-volume-pgdata:/var/lib/postgresql/data
     env_file:
@@ -26,6 +40,14 @@ services:
     networks:
       - linx-network
 
+  catalog:
+    build: ./../products-catalog
+    container_name: catalog
+    ports:
+      - "3002:3002"
+    networks:
+      - linx-network
+
   products:
     build: ./../products
     container_name: products
@@ -39,26 +61,10 @@ services:
     networks:
       - linx-network
 
-  catalog:
-    build: ./../products-catalog
-    container_name: catalog
-    ports:
-      - "3002:3002"
-    networks:
-      - linx-network
-
-  redis:
-    container_name: redis
-    restart: always
-    image: redis
-    ports:
-      - "6379:6379"
-    networks:
-      - linx-network
-
 networks:
   linx-network:
     name: linx-network
+    driver: "bridge"
 
 volumes:
   postgres-volume-pgdata:

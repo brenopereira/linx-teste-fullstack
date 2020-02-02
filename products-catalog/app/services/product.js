@@ -1,4 +1,4 @@
-const { PRODUCTS_API_URL } = require("../../../URLs");
+const { PRODUCTS_API_URL } = require("../../URLs");
 const Axios = require("axios");
 
 module.exports = {

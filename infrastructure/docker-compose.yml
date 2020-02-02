@@ -58,6 +58,7 @@ services:
     environment:
       - POSTGRES_HOST=db
       - REDIS_HOST=redis
+    command: ["./wait-for-it.sh", "db:5432", "--", "sequelize", "db:migrate"]
     networks:
       - linx-network
 

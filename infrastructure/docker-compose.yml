@@ -34,7 +34,7 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_HOST=db
+      - POSTGRES_HOST=db
       - REDIS_HOST=redis
     networks:
       - linx-network

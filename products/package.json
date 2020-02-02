@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "serve": "nodemon index.js",
-    "import-database": "node import-database.js"
+    "import-database": "node import-database.js",
+    "test": "jest --detectOpenHandles"
   },
   "keywords": [],
   "author": "",
@@ -13,14 +14,22 @@
   "dependencies": {
     "express": "^4.17.1",
     "ioredis": "^4.14.1",
+    "jest": "^25.1.0",
     "nodemon": "^2.0.2",
     "pg": "^7.17.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.1",
     "sequelize-transparent-cache": "^2.2.3",
-    "sequelize-transparent-cache-ioredis": "^2.2.3"
+    "sequelize-transparent-cache-ioredis": "^2.2.3",
+    "supertest": "^4.0.2"
   },
   "devDependencies": {
     "sequelize-cli": "^5.5.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }

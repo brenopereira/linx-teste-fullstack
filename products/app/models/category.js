@@ -9,11 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  Category.associate = function(models) {
-    Category.belongsToMany(models.ProductCategory, {
+  Category.associate = models => {
+    Category.belongsToMany(models.Product, {
       through: "product_categories",
-      foreignKey: "category_id",
-      as: "categories"
+      as: "products",
+      foreignKey: "categoryId"
     });
   };
 

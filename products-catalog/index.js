@@ -1,9 +1,12 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const app = express();
 
-app.use(express.urlencoded({ extended: false }));
+const routes = require("./routes");
 
-app.get("/catalogs", (req, res) => res.send("Hello Catalog API"));
+app.use(bodyParser.json());
+
+routes(app);
 
 app.listen(3002, () =>
   console.log(`Product Catalog Microservice API listening on port 3002!`)

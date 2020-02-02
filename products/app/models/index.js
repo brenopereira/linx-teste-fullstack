@@ -6,7 +6,7 @@ const db = {};
 
 const Redis = require("ioredis");
 const redis = new Redis({
-  host: "localhost",
+  host: "redis",
   port: 6379
 });
 
@@ -41,13 +41,8 @@ Object.keys(db).forEach(modelName => {
   }
 });
 
-async function loadSyncDatabaseRedisLinx() {
-  await sequelize.sync();
-}
-
-loadSyncDatabaseRedisLinx();
-
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.Sequelize = sequelize.sync();
 
 module.exports = db;

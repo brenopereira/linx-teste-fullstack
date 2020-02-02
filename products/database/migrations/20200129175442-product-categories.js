@@ -16,7 +16,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      product_id: {
+      productId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
@@ -24,11 +24,11 @@ module.exports = {
           key: "id"
         }
       },
-      category_id: {
+      categoryId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
-          model: "product_categories",
+          model: "categories",
           key: "id"
         }
       },

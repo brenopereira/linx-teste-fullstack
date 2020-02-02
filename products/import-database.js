@@ -10,23 +10,27 @@ productsCatalog.map(async row => {
   const product = JSON.parse(row);
 
   product.categories.map(async category => {
-    const categories = await Category.findAll({
+    await Category.findOrCreate({
       where: {
         name: category.name
+      },
+      defaults: {
+        name: category.name
       }
+    }).spread(async (category, created) => {
+      await Product.create({
+        name: product.details.name,
+        price: product.price,
+        last_price: product.oldPrice,
+        status: product.status
+      }).then(product => {
+        product.save().then(async productSaved => {
+          await ProductCategory.create({
+            categoryId: category.id,
+            productId: product.id
+          });
+        });
+      });
     });
-
-    if (categories.length) {
-      console.log("existe");
-    } else {
-      console.log("nao existe");
-    }
   });
-
-  // Product.cache().create({
-  //   name: product.details.name,
-  //   price: product.price,
-  //   last_price: product.oldPrice,
-  //   status: product.status
-  // });
 });

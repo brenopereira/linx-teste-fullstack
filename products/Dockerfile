@@ -4,10 +4,7 @@ ADD . /services/products
 
 RUN cd /services/products; \
   npm install; \
-  npm i -g sequelize-cli; \
-  git clone https://github.com/vishnubob/wait-for-it.git; \
-  chmod +X entry.sh; \
-  sh entry.sh
+  npm i -g sequelize-cli
 
 EXPOSE 3001
 
